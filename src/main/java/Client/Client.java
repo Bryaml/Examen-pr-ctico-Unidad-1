@@ -48,12 +48,21 @@ public class Client {
                     break;
                 case 2:
                     DaoCal daorFC = new DaoCal();
-                    List<BeanRfc> listCourse = daorFC.findAll();
-                    boolean response2 = (boolean) client.execute("Methods.findAll", listCourse );
+                    List<BeanRfc> listrf = daorFC.findAll();
+                    boolean response2 = (boolean) client.execute("Methods.findAll", listrf );
                     System.out.println(response2);
 
                     break;
                 case 3:
+                    DaoCal daorF = new DaoCal();
+                    List<BeanRfc> list = daorF.findAll();
+                    boolean response3 = (boolean) client.execute("Methods.findAll", list );
+                    System.out.println(response3);
+
+                case 4:
+
+                    break;
+                case 5:
                     System.out.println("ingresa un id para eliminar ");
                     int id = input.nextInt();
 
@@ -62,11 +71,6 @@ public class Client {
 
 
                     String response4 = (String) client.execute("Methods.deletePerson", data2);
-                case 4:
-
-                    break;
-                case 5:
-
                     break;
                 default:
 

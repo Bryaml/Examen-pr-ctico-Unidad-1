@@ -45,7 +45,22 @@ public class DaoCal {
         }
         return false;
     }
-
+    public boolean updatePerson(BeanRfc person){
+        boolean result=false;
+        try
+                (Connection con =MySQLConnection.getConnection();
+                 PreparedStatement pstm =con.prepareStatement("update persons set  name = ?, firtsname=? where id_persons=?;");
+                )
+        {
+            pstm.setString(1, person.getName());
+            pstm.setString(1, person.getFirtsname());
+            pstm.setLong(3,person.getId());
+            result =pstm.executeUpdate()==1;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return result;
+    }
 
     public boolean deletePerson(int id) {
         boolean result=false;
@@ -70,10 +85,10 @@ public class DaoCal {
                 ResultSet rs = stm.executeQuery("select *  from rfc")
         ) {
             while (rs.next()){
-                BeanRfc unCurso = new BeanRfc();
-                unCurso.setId(rs.getInt("id"));
-                unCurso.setName(rs.getNString("name"));
-                unCurso.setFirtsname(rs.getString("firtsname"));
+                BeanRfc rfc = new BeanRfc();
+                rfc.setId(rs.getInt("id"));
+                rfc.setName(rs.getNString("name"));
+                rfc.setFirtsname(rs.getString("firtsname"));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
