@@ -54,13 +54,13 @@ public class Client {
 
                     break;
                 case 3:
-                    DaoCal daorF = new DaoCal();
-                    List<BeanRfc> list = daorF.findAll();
-                    boolean response3 = (boolean) client.execute("Methods.findAll", list );
-                    System.out.println(response3);
+
 
                 case 4:
-
+                    DaoCal daorF = new DaoCal();
+                    List<BeanRfc> list = daorF.findAll();
+                    boolean response3 = (boolean) client.execute("Methods.findAl", list );
+                    System.out.println(response3);
                     break;
                 case 5:
                     System.out.println("ingresa un id para eliminar ");

@@ -26,6 +26,26 @@ public class DaoCal {
         }
         return false;
     }
+    public boolean saveRfc(String name, String firtsname, String secondname,int age, String alatorio){
+
+        try
+                (Connection con = MySQLConnection.getConnection();
+                 PreparedStatement pstm =con.prepareStatement("insert into rfc (name,firtsname,secondname,age,alatorio)values(?,?,?,?,?);")
+                )
+        {
+            pstm.setString(1, name);
+            pstm.setString(2, firtsname);
+            pstm.setString(3, secondname);
+
+            pstm.setInt(4,age);
+            pstm.setString(5,alatorio);
+
+            return  pstm.executeUpdate()==1;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return false;
+    }
     public boolean rfc(String name, String firtsname, String secondname, String curp,int age){
 
         try
